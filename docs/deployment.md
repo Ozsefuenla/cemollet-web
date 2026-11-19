@@ -18,6 +18,6 @@ Triggers: push to `main`, or manual `workflow_dispatch`.
 2. `site` and `base` in `astro.config.mjs` are already set to the values above.
 
 ## Verification
-- `npm run build` runs without errors.
-- After the first deploy, open the Pages URL and check that internal links and images resolve under the `base` path.
+- Production: https://ozsefuenla.github.io/cemollet-web/ returns 200, and internal routes and assets resolve under `/cemollet-web/`.
+- Troubleshooting: if `actions/deploy-pages` fails, check Settings → Pages → Source is **GitHub Actions**.
 - Known QA gap: home Lighthouse performance is 80 (target 90), limited by the hero image hosted on the school server. See `docs/design-system.md`.
