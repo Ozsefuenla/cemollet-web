@@ -1,0 +1,108 @@
+---
+import { url } from '../lib/url';
+
+const mainLinks = [
+  { label: 'Inici', href: '/' },
+  { label: 'Escola', href: '/escola' },
+  { label: 'Etapes', href: '/etapes' },
+  { label: 'Serveis', href: '/serveis' },
+  { label: 'Activitats', href: '/activitats' },
+  { label: 'Notícies', href: '/noticies' },
+  { label: 'Contacte', href: '/contacte' },
+];
+
+// Secondary pages are not part of the mockup: they link to the current website.
+const moreLinks = [
+  { label: 'AMPA', href: 'https://www.cemollet.eu/continguts_c/ampa-3.html' },
+  { label: "Perfil de l'alumne", href: 'https://www.cemollet.eu/continguts_c/perfil-lalumne-6.html' },
+  { label: 'Estratègia digital', href: 'https://www.cemollet.eu/continguts_c/estrategia-digital-9.html' },
+  { label: 'Consell Escolar', href: 'https://www.cemollet.eu/continguts_c/eleccions-al-consell-escolar-10.html' },
+  { label: 'Codi Escuela 4.0', href: 'https://www.cemollet.eu/continguts_c/programa-codigo-escuela-40-11.html' },
+];
+
+const current = Astro.url.pathname;
+const isCurrent = (href: string) => {
+  const target = url(href);
+  return current === target || current === `${target}/` || (href !== '/' && current.startsWith(target));
+};
+---
+
+<header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+    <a href={url('/')} class="flex items-center gap-3 rounded-2xl">
+      <img src={url('/logo.jpg')} alt="CEM Mollet, centre d'estudis" class="h-12 w-auto" width="72" height="48" />
+    </a>
+
+    <nav aria-label="Navegació principal" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {mainLinks.map((link) => (
+          <li>
+            <a
+              href={url(link.href)}
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+              class:list={[
+                'rounded-full px-3 py-2 font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700',
+                isCurrent(link.href) && 'bg-brand-50 text-brand-700',
+              ]}>{link.label}</a
+            >
+          </li>
+        ))}
+        <li>
+          <details class="relative">
+            <summary class="cursor-pointer list-none rounded-full px-3 py-2 font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">
+              Més
+            </summary>
+            <ul class="absolute right-0 mt-2 w-64 rounded-3xl border border-slate-200 bg-white p-2 shadow-lg">
+              {moreLinks.map((link) => (
+                <li>
+                  <a class="block rounded-2xl px-4 py-2 text-slate-700 hover:bg-brand-50 hover:text-brand-700" href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={url('/contacte')}
+        class="hidden rounded-full bg-accent-yellow px-5 py-2 font-display font-bold text-slate-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:inline-block"
+      >
+        Portes obertes
+      </a>
+      <button
+        type="button"
+        class="rounded-full border border-slate-300 p-2 text-slate-800 lg:hidden"
+        aria-expanded="false"
+        aria-controls="menu-mobil"
+        data-menu-toggle
+      >
+        <span class="sr-only">Obrir el menú</span>
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="menu-mobil" aria-label="Navegació mòbil" class="hidden border-t border-slate-200 bg-white lg:hidden" data-menu-panel>
+    <ul class="mx-auto max-w-6xl space-y-1 px-4 py-3">
+      {mainLinks.map((link) => (
+        <li><a class="block rounded-2xl px-4 py-3 font-semibold text-slate-800 hover:bg-brand-50" href={url(link.href)}>{link.label}</a></li>
+      ))}
+      <li><a class="block rounded-2xl bg-accent-yellow px-4 py-3 font-display font-bold text-slate-900" href={url('/contacte')}>Portes obertes</a></li>
+      {moreLinks.map((link) => (
+        <li><a class="block rounded-2xl px-4 py-3 text-slate-600 hover:bg-brand-50" href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    panel?.classList.toggle('hidden', !open);
+  });
+</script>

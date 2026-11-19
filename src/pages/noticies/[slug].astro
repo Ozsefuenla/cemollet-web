@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TextBody from '../../components/TextBody.astro';
+import { getNews } from '../../lib/data';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const news = await getNews();
+  return news.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const date = new Intl.DateTimeFormat('ca-ES', { day: 'numeric', month: 'long', year: 'numeric' }).format(
+  new Date(`${item.publishedAt}T00:00:00`),
+);
+---
+
+<BaseLayout title={item.title} description={item.summary}>
+  <article class="mx-auto max-w-4xl px-4 py-12">
+    <a href={url('/noticies')} class="font-semibold text-brand-700 hover:underline">← Totes les notícies</a>
+    <time datetime={item.publishedAt} class="mt-6 block font-semibold text-brand-600">{date}</time>
+    <h1 class="mt-2 text-4xl font-bold leading-tight md:text-5xl">{item.title}</h1>
+    <img src={item.imageUrl} alt="" class="mt-8 aspect-video w-full rounded-blob object-cover shadow-xl" />
+    <div class="mt-10">
+      {item.body ? <TextBody body={item.body} /> : <p class="text-lg text-slate-700">Aquesta notícia no té contingut disponible.</p>}
+    </div>
+  </article>
+</BaseLayout>

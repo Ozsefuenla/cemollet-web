@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  href?: string;
+  icon?: string;
+  accent?: 'yellow' | 'coral' | 'green' | 'sky';
+}
+
+const { title, text, href, icon, accent = 'yellow' } = Astro.props;
+
+const accents = {
+  yellow: 'bg-accent-yellow/30',
+  coral: 'bg-accent-coral/25',
+  green: 'bg-accent-green/30',
+  sky: 'bg-accent-sky/30',
+};
+---
+
+<article class="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+  <div aria-hidden="true" class={`absolute -right-8 -top-8 h-28 w-28 rounded-blob ${accents[accent]} transition group-hover:scale-125`}></div>
+  {icon && <span aria-hidden="true" class="relative mb-4 text-4xl">{icon}</span>}
+  <h3 class="relative text-2xl font-bold text-slate-900">
+    {href ? <a href={href} class="after:absolute after:inset-0 after:content-[''] rounded-lg">{title}</a> : title}
+  </h3>
+  <p class="relative mt-3 text-slate-700">{text}</p>
+</article>

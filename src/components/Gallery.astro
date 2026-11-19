@@ -1,0 +1,70 @@
+---
+import type { GalleryImage } from '../lib/types';
+
+interface Props {
+  images: GalleryImage[];
+  title?: string;
+}
+
+const { images, title = 'Galeria' } = Astro.props;
+---
+
+<section aria-labelledby="galeria-titol" class="mx-auto max-w-6xl px-4" data-gallery>
+  <h2 id="galeria-titol" class="mb-6 text-3xl font-bold">{title}</h2>
+
+  <ul class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+    {images.map((img, i) => (
+      <li>
+        <button
+          type="button"
+          class="group block w-full overflow-hidden rounded-3xl ring-offset-2 focus-visible:ring-4"
+          data-gallery-open={i}
+          aria-label={`Ampliar: ${img.alt}`}
+        >
+          <img src={img.imageUrl} alt={img.alt} loading="lazy" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-110" />
+        </button>
+      </li>
+    ))}
+  </ul>
+
+  <dialog class="m-auto w-[min(92vw,960px)] rounded-3xl bg-transparent p-0 backdrop:bg-slate-900/80" data-gallery-dialog aria-label="Galeria ampliada">
+    <div class="relative rounded-3xl bg-white p-3">
+      <img src="" alt="" class="max-h-[75vh] w-full rounded-2xl object-contain" data-gallery-image />
+      <p class="mt-2 text-center text-sm text-slate-700" data-gallery-caption></p>
+      <div class="mt-3 flex items-center justify-between gap-3">
+        <button type="button" class="rounded-full border-2 border-brand-700 px-4 py-2 font-semibold text-brand-700" data-gallery-prev>Anterior</button>
+        <button type="button" class="rounded-full bg-brand-700 px-4 py-2 font-semibold text-white" data-gallery-close>Tancar</button>
+        <button type="button" class="rounded-full border-2 border-brand-700 px-4 py-2 font-semibold text-brand-700" data-gallery-next>Següent</button>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<script define:vars={{ images }}>
+  const root = document.querySelector('[data-gallery]');
+  const dialog = root?.querySelector('[data-gallery-dialog]');
+  const image = root?.querySelector('[data-gallery-image]');
+  const caption = root?.querySelector('[data-gallery-caption]');
+  let index = 0;
+
+  const show = (i) => {
+    index = (i + images.length) % images.length;
+    image.src = images[index].imageUrl;
+    image.alt = images[index].alt;
+    caption.textContent = `${index + 1} / ${images.length} · ${images[index].alt}`;
+  };
+
+  root?.querySelectorAll('[data-gallery-open]').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      show(Number(btn.getAttribute('data-gallery-open')));
+      dialog.showModal();
+    }),
+  );
+  root?.querySelector('[data-gallery-prev]')?.addEventListener('click', () => show(index - 1));
+  root?.querySelector('[data-gallery-next]')?.addEventListener('click', () => show(index + 1));
+  root?.querySelector('[data-gallery-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') show(index - 1);
+    if (e.key === 'ArrowRight') show(index + 1);
+  });
+</script>

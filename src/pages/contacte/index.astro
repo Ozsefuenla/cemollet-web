@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { url } from '../../lib/url';
+
+// MOCKUP: the form does not send data. See docs/spec.md (Contacte).
+---
+
+<BaseLayout title="Contacte" description="Contacta amb el Centre d'Estudis Mollet">
+  <PageHeader title="Contacte" text="Escriu-nos o truca'ns. Et respondrem com més aviat puguem." />
+
+  <section class="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-2">
+    <div class="space-y-6 text-lg">
+      <div>
+        <h2 class="text-2xl font-bold">Dades de contacte</h2>
+        <p class="mt-2">Av. Calderó, 19<br />08100 Mollet del Vallès</p>
+        <p class="mt-2"><a class="font-semibold text-brand-700 hover:underline" href="tel:935932198">935 932 198</a></p>
+        <p><a class="font-semibold text-brand-700 hover:underline" href="mailto:cemollet@cemollet.eu">cemollet@cemollet.eu</a></p>
+      </div>
+      <iframe
+        title="Mapa del Centre d'Estudis Mollet"
+        class="h-64 w-full rounded-3xl"
+        loading="lazy"
+        src="https://www.google.com/maps?q=Av.+Calder%C3%B3,+19,+08100+Mollet+del+Vall%C3%A8s&output=embed"
+      ></iframe>
+    </div>
+
+    <form id="contact-form" class="space-y-5 rounded-3xl bg-white p-6 shadow-lg ring-1 ring-slate-200" novalidate>
+      <p class="rounded-2xl bg-accent-yellow/30 p-4 text-sm font-semibold text-slate-900" role="note">
+        Mockup: aquest formulari no envia dades.
+      </p>
+
+      <div>
+        <label class="mb-1 block font-semibold" for="nom">Nom i cognoms</label>
+        <input id="nom" name="nom" type="text" autocomplete="name" required class="w-full rounded-2xl border border-slate-300 px-4 py-3" />
+      </div>
+      <div>
+        <label class="mb-1 block font-semibold" for="email">Correu electrònic</label>
+        <input id="email" name="email" type="email" autocomplete="email" required class="w-full rounded-2xl border border-slate-300 px-4 py-3" />
+      </div>
+      <div>
+        <label class="mb-1 block font-semibold" for="telefon">Telèfon</label>
+        <input id="telefon" name="telefon" type="tel" autocomplete="tel" class="w-full rounded-2xl border border-slate-300 px-4 py-3" />
+      </div>
+      <div>
+        <label class="mb-1 block font-semibold" for="missatge">Missatge</label>
+        <textarea id="missatge" name="missatge" rows="5" required class="w-full rounded-2xl border border-slate-300 px-4 py-3"></textarea>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <input id="rgpd" name="rgpd" type="checkbox" required class="mt-1 h-5 w-5 rounded border-slate-400" />
+        <label for="rgpd" class="text-sm">
+          He llegit i accepto la <a class="font-semibold text-brand-700 underline" href={url('/nota-legal')}>nota legal</a> i el tractament de les meves dades per respondre a la consulta.
+        </label>
+      </div>
+
+      <button type="submit" class="rounded-full bg-brand-700 px-6 py-3 font-display font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-brand-800">
+        Envia
+      </button>
+      <p id="form-status" class="text-sm font-semibold text-brand-700" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    if (status) status.textContent = 'Mockup: no s\'han enviat les dades.';
+  });
+</script>

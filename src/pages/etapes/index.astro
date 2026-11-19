@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StageCard from '../../components/StageCard.astro';
+import { getStages } from '../../lib/data';
+
+const stages = await getStages();
+const accents = ['yellow', 'coral', 'green'] as const;
+---
+
+<BaseLayout title="Etapes" description="Infantil, Primària i Secundària al Centre d'Estudis Mollet">
+  <PageHeader title="Etapes" text="D'I3 a 4t d'ESO, acompanyem cada etapa amb una mirada pròpia." />
+  <section class="mx-auto grid max-w-6xl gap-6 px-4 py-12 md:grid-cols-3">
+    {stages.map((stage, i) => <StageCard stage={stage} accent={accents[i % 3]} />)}
+  </section>
+</BaseLayout>

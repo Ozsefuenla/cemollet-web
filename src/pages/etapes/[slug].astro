@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TextBody from '../../components/TextBody.astro';
+import { getStages } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const stages = await getStages();
+  return stages.map((stage) => ({ params: { slug: stage.slug }, props: { stage } }));
+}
+
+const { stage } = Astro.props;
+---
+
+<BaseLayout title={stage.title} description={stage.summary}>
+  <PageHeader title={stage.title} text={stage.summary} />
+  <section class="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-2">
+    <img src={stage.imageUrl} alt="" loading="lazy" class="aspect-[4/3] w-full rounded-blob object-cover shadow-xl" />
+    <TextBody body={stage.body} />
+  </section>
+</BaseLayout>

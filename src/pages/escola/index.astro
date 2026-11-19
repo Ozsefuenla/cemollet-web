@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TextBody from '../../components/TextBody.astro';
+import CTA from '../../components/CTA.astro';
+import { getPage } from '../../lib/data';
+
+const page = await getPage('escola');
+if (!page) throw new Error('Missing content: src/content/pages/escola.json');
+---
+
+<BaseLayout title={page.title} description={page.summary}>
+  <PageHeader title={page.title} text={page.summary} />
+  <section class="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-2">
+    <img src={page.imageUrl} alt="" loading="lazy" class="aspect-[4/3] w-full rounded-blob object-cover shadow-xl" />
+    <TextBody body={page.body} />
+  </section>
+  <section class="pb-16">
+    <CTA title="Vols venir a visitar-nos?" text="Escriu-nos i t'expliquem com funciona el centre." href="/contacte" label="Contacta" />
+  </section>
+</BaseLayout>

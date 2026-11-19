@@ -1,0 +1,45 @@
+---
+import { url } from '../lib/url';
+---
+
+<footer class="mt-16 bg-brand-800 text-white">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3">
+    <div>
+      <img src={url('/logo.jpg')} alt="CEM Mollet" class="mb-4 h-14 w-auto rounded-xl bg-white p-1" width="84" height="56" />
+      <p class="text-sm">Centre d'Estudis Mollet, escola concertada d'Infantil, Primària i Secundària.</p>
+    </div>
+
+    <div class="text-sm">
+      <h2 class="mb-3 font-display text-lg text-white">Contacte</h2>
+      <p>Av. Calderó, 19</p>
+      <p>08100 Mollet del Vallès</p>
+      <p class="mt-2"><a class="underline-offset-2 hover:underline" href="tel:935932198">935 932 198</a></p>
+      <p><a class="underline-offset-2 hover:underline" href="mailto:cemollet@cemollet.eu">cemollet@cemollet.eu</a></p>
+      <p class="mt-4">
+        <a class="inline-block rounded-full bg-white px-4 py-2 font-semibold text-brand-800 hover:bg-accent-yellow" href="https://cemollet.clickedu.eu/" target="_blank" rel="noopener">
+          Accés Clickedu
+        </a>
+      </p>
+    </div>
+
+    <div class="text-sm">
+      <h2 class="mb-3 font-display text-lg text-white">Mapa</h2>
+      <iframe
+        title="Mapa del Centre d'Estudis Mollet"
+        class="h-40 w-full rounded-2xl"
+        loading="lazy"
+        src="https://www.google.com/maps?q=Av.+Calder%C3%B3,+19,+08100+Mollet+del+Vall%C3%A8s&output=embed"
+      ></iframe>
+    </div>
+  </div>
+
+  <div class="border-t border-white/20">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-4 text-sm">
+      <p>Copyright © 2026 · Centre d'Estudis Mollet</p>
+      <ul class="flex flex-wrap gap-4">
+        <li><a class="underline-offset-2 hover:underline" href={url('/nota-legal')}>Nota legal</a></li>
+        <li><a class="underline-offset-2 hover:underline" href="https://escolartextil.com/ca/centre-estudis-mollet-80.html" target="_blank" rel="noopener">Compra de xandalls i bates</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

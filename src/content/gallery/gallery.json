@@ -1,0 +1,74 @@
+{
+  "images": [
+    {
+      "id": "foto-1",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/17_1_escola_edifici.jpg",
+      "alt": "Escola"
+    },
+    {
+      "id": "foto-2",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/2_1_2_foto3.jpg",
+      "alt": "Pista poliesportiva"
+    },
+    {
+      "id": "foto-3",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/3_1_foto4.jpg",
+      "alt": "Pista poliesportiva"
+    },
+    {
+      "id": "foto-4",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/5_1_gimnas.jpg",
+      "alt": "Gimnàs"
+    },
+    {
+      "id": "foto-5",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/00000000006_1_laboratori.jpg",
+      "alt": "Laboratori"
+    },
+    {
+      "id": "foto-6",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/16_1_aula_musica.jpg",
+      "alt": "Aula Música"
+    },
+    {
+      "id": "foto-7",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/15_1_taller.jpg",
+      "alt": "Taller"
+    },
+    {
+      "id": "foto-8",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/00000000014_1_pati.jpg",
+      "alt": "Pati"
+    },
+    {
+      "id": "foto-9",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/00000000011_1_pati.jpg",
+      "alt": "Pati"
+    },
+    {
+      "id": "foto-10",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/7_1_classe_infantil.jpg",
+      "alt": "Classe infantil"
+    },
+    {
+      "id": "foto-11",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/8_1_classe_pri.jpg",
+      "alt": "Classe primària"
+    },
+    {
+      "id": "foto-12",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/9_1_classe_eso_2.jpg",
+      "alt": "Classe secundària"
+    },
+    {
+      "id": "foto-13",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/10_1_menjador1.jpg",
+      "alt": "menjador"
+    },
+    {
+      "id": "foto-14",
+      "imageUrl": "https://cemollet.clickedu.eu/private/cemollet.clickedu.eu/upload/web_fotos/fotos/grans/18_1_pista_escola_phixr.jpg",
+      "alt": "Pista"
+    }
+  ]
+}

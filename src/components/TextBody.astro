@@ -1,0 +1,12 @@
+---
+interface Props {
+  body: string;
+}
+
+// Body is plain text: one paragraph per line.
+const paragraphs = Astro.props.body.split('\n').filter(Boolean);
+---
+
+<div class="max-w-prose space-y-4 text-lg text-slate-800 [overflow-wrap:anywhere]">
+  {paragraphs.map((p) => <p>{p}</p>)}
+</div>

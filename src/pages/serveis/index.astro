@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TextBody from '../../components/TextBody.astro';
+import { getServices } from '../../lib/data';
+
+const services = await getServices();
+---
+
+<BaseLayout title="Serveis" description="Serveis del Centre d'Estudis Mollet">
+  <PageHeader title="Serveis" text="Serveis per facilitar el dia a dia de les famílies." />
+  <section class="mx-auto max-w-6xl space-y-12 px-4 py-12">
+    {services.map((s) => (
+      <article class="grid min-w-0 grid-cols-1 gap-8 md:grid-cols-2">
+        <img src={s.imageUrl} alt="" loading="lazy" class="aspect-[4/3] w-full min-w-0 rounded-blob object-cover shadow-xl" />
+        <div class="min-w-0">
+          <h2 class="mb-4 text-3xl font-bold">{s.title}</h2>
+          <TextBody body={s.body} />
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

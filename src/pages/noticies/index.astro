@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { getNews } from '../../lib/data';
+
+const news = await getNews();
+---
+
+<BaseLayout title="Notícies" description="Últimes notícies del Centre d'Estudis Mollet">
+  <PageHeader title="Notícies" text="Novetats del dia a dia del centre." />
+  <section class="mx-auto grid max-w-6xl gap-6 px-4 py-12 sm:grid-cols-2 lg:grid-cols-3">
+    {news.map((item) => <NewsCard news={item} />)}
+  </section>
+</BaseLayout>

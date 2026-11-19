@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+import StageCard from '../components/StageCard.astro';
+import NewsCard from '../components/NewsCard.astro';
+import Gallery from '../components/Gallery.astro';
+import CTA from '../components/CTA.astro';
+import { getGallery, getNews, getStages } from '../lib/data';
+import { url } from '../lib/url';
+
+const [stages, news, gallery] = await Promise.all([getStages(), getNews(), getGallery()]);
+const heroImage = stages[0]?.imageUrl;
+---
+
+<BaseLayout title="Inici" description="Escola concertada d'Infantil, Primària i Secundària a Mollet del Vallès">
+  <Hero
+    eyebrow="Centre d'Estudis Mollet"
+    title="Una escola per ser, aprendre i créixer"
+    text="Escola concertada d'una línia, arrelada a Mollet del Vallès, que acompanya infants i joves des d'I3 fins a 4t d'ESO."
+    imageUrl={heroImage}
+    imageAlt="Alumnes del Centre d'Estudis Mollet"
+    primaryCta={{ label: "Descobreix l'escola", href: '/escola' }}
+    secondaryCta={{ label: 'Contacta', href: '/contacte' }}
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-6 md:grid-cols-3">
+      <Card accent="yellow" icon="🧩" title="Cada alumne compta" text="Acompanyem cada alumne tenint en compte les seves necessitats, interessos i capacitats." />
+      <Card accent="sky" icon="🔬" title="Aprendre fent i compartint" text="Les llengües, la ciència, l'art i la tecnologia es connecten amb experiències significatives." />
+      <Card accent="coral" icon="🏡" title="Al costat de les famílies" text="Mantenim una comunicació propera i un seguiment compartit al llarg de totes les etapes." />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16" aria-labelledby="etapes-titol">
+    <h2 id="etapes-titol" class="mb-8 text-3xl font-bold">Etapes</h2>
+    <div class="grid gap-6 md:grid-cols-3">
+      {stages.map((stage, i) => (
+        <StageCard stage={stage} accent={(['yellow', 'coral', 'green'] as const)[i % 3]} />
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16" aria-labelledby="noticies-titol">
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <h2 id="noticies-titol" class="text-3xl font-bold">Últimes notícies</h2>
+      <a href={url('/noticies')} class="font-display font-bold text-brand-700 hover:underline">Totes les notícies</a>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {news.slice(0, 6).map((item) => <NewsCard news={item} />)}
+    </div>
+  </section>
+
+  <section class="pb-16">
+    <Gallery images={gallery} title="Un volt per l'escola" />
+  </section>
+
+  <section class="pb-16">
+    <CTA title="Vols conèixer el centre?" text="Parlem-ne. T'hi acompanyem en tot el procés." href="/contacte" label="Contacta" />
+  </section>
+</BaseLayout>

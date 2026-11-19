@@ -1,0 +1,23 @@
+---
+import { url } from '../lib/url';
+
+const phone = '935 932 198';
+const email = 'cemollet@cemollet.eu';
+---
+
+<div class="bg-brand-700 text-white text-sm">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-2">
+    <p>
+      <span class="font-semibold">TEL.</span>
+      <a class="underline-offset-2 hover:underline" href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a>
+      <span aria-hidden="true"> · </span>
+      <a class="underline-offset-2 hover:underline" href={`mailto:${email}`}>{email}</a>
+    </p>
+    <ul class="flex items-center gap-3" aria-label="Xarxes socials">
+      <li><a class="hover:underline" href="https://www.facebook.com/CentreDEstudisMollet/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a class="hover:underline" href="https://twitter.com/CEM1931" target="_blank" rel="noopener">X</a></li>
+      <li><a class="hover:underline" href="https://www.youtube.com/channel/UCOtUePGVflRom_SM6X8B3gA" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a class="hover:underline" href="https://www.instagram.com/centredestudismollet/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+  </div>
+</div>

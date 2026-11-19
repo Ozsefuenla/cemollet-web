@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "lipdub-escola",
+      "label": "Lipdub escola",
+      "url": "https://www.youtube.com/watch?v=PkmBiT_y44A"
+    },
+    {
+      "id": "els-nostres-mestres",
+      "label": "Els nostres mestres",
+      "url": "https://elsnostresmestres.wordpress.com/2013-2014-cultura-i-lleure/"
+    },
+    {
+      "id": "l-edat-del-pavo",
+      "label": "L'Edat del pavo",
+      "url": "http://blocs.xtec.cat/cemradio/"
+    },
+    {
+      "id": "mostra-audiovisuals",
+      "label": "Mostra Audiovisuals",
+      "url": "http://tonicayu.wixsite.com/audiovisualscem"
+    },
+    {
+      "id": "fem-ciencia",
+      "label": "Fem Ciència",
+      "url": "http://blocs.xtec.cat/femcienciaencontext/"
+    },
+    {
+      "id": "dia",
+      "label": "Dia π",
+      "url": "http://blocs.xtec.cat/diapicem/"
+    },
+    {
+      "id": "portes-obertes",
+      "label": "Portes obertes",
+      "url": "https://www.youtube.com/watch?v=5DchKLxu9-k&feature=youtu.be"
+    },
+    {
+      "id": "compra-de-xandalls-i-bates-escolars",
+      "label": "Compra de xandalls i bates escolars",
+      "url": "http://escolartextil.com/ca/centre-estudis-mollet-80.html"
+    },
+    {
+      "id": "elsavis",
+      "label": "elsavis",
+      "url": "https://elsavis.wordpress.com/"
+    },
+    {
+      "id": "com-es-la-nostra-escola",
+      "label": "Com és la nostra escola?",
+      "url": "https://youtu.be/_l7kMpZgeBY"
+    },
+    {
+      "id": "recull-segona-mostra-audiovisuals-2017-18",
+      "label": "Recull Segona Mostra Audiovisuals 2017-18",
+      "url": "https://www.youtube.com/watch?v=54ddxR4wRkA&t=1s"
+    },
+    {
+      "id": "tutorial-per-a-families-de-la-plataforma-clickedu",
+      "label": "Tutorial per a famílies de la plataforma clickedu",
+      "url": "https://www.youtube.com/watch?v=SK3ndRJRql0"
+    }
+  ]
+}
